@@ -66,7 +66,7 @@ Understanding these utilities and files is key to effectively managing and troub
     <li><strong>ssh</strong>
         <ul>
             <li>Used for securely connecting to a remote server.</li>
-            <li>Example: <code>ssh user@hostname</code></li>
+            <li>Example: <code>ssh user@hostname</code> - initiates a secure connection to a remote server using your specified username and hostname.</li>
         </ul>
     </li>
     <li><strong>sshd</strong>
@@ -77,37 +77,37 @@ Understanding these utilities and files is key to effectively managing and troub
     <li><strong>scp</strong>
         <ul>
             <li>Securely copies files between local and remote systems using SSH.</li>
-            <li>Example: <code>scp file.txt user@hostname:/path/to/destination</code></li>
+            <li>Example: <code>scp file.txt user@hostname:/path/to/destination</code> - securely copies a file from your local machine to a remote server using SSH</li>
         </ul>
     </li>
     <li><strong>sftp</strong>
         <ul>
             <li>Secure File Transfer Protocol, an interactive file transfer utility over SSH.</li>
-            <li>Example: <code>sftp user@hostname</code></li>
+            <li>Example: <code>sftp user@hostname</code> - starts a secure file transfer session to a remote server using the SFTP (Secure File Transfer Protocol) protocol</li>
         </ul>
     </li>
     <li><strong>ssh-keygen</strong>
         <ul>
             <li>Generates and manages SSH key pairs.</li>
-            <li>Example: <code>ssh-keygen -t rsa -b 4096</code></li>
+            <li>Example: <code>ssh-keygen -t rsa -b 4096</code> - generates a new RSA SSH key pair with 4096 bits for secure authentication.</li>
         </ul>
     </li>
     <li><strong>ssh-copy-id</strong>
         <ul>
             <li>Copies a public key to a remote server for passwordless login.</li>
-            <li>Example: <code>ssh-copy-id user@hostname</code></li>
+            <li>Example: <code>ssh-copy-id -i ~/.ssh/your_specific_public_key.pub user@hostname</code> - copies the specified public SSH key to a remote server for passwordless login</li>
         </ul>
     </li>
     <li><strong>ssh-agent</strong>
         <ul>
             <li>A helper program to store private keys in memory for easy authentication.</li>
-            <li>Example: <code>eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa</code></li>
+            <li>Example: <code>eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa</code> - starts an SSH agent and adds your private key to it for easy SSH key management.</li>
         </ul>
     </li>
     <li><strong>ssh-add</strong>
         <ul>
             <li>Adds private keys to ssh-agent for session-based authentication.</li>
-            <li>Example: <code>ssh-add ~/.ssh/id_rsa</code></li>
+            <li>Example: <code>ssh-add ~/.ssh/id_rsa</code> - adds your private SSH key to the SSH agent for easy SSH key management, even if there is no passphrase</li>
         </ul>
     </li>
 </ul>
@@ -125,13 +125,13 @@ Host myserver
     User myuser
     Port 2222
     IdentityFile ~/.ssh/id_rsa
-                </pre>
+                </pre> - shows how to set up a user-specific SSH configuration file for connecting to a remote server with custom settings. By default, SSH uses port 22, your local username, and the first available key
             </li>
         </ul>
     </li>
     <li><strong>~/.ssh/known_hosts</strong>
         <ul>
-            <li>Stores fingerprints of previously connected hosts to prevent man-in-the-middle attacks.</li>
+            <li>Stores fingerprints of previously connected hosts to prevent man-in-the-middle attacks. fingerprints refer to the unique identifiers (hashed representations) of the SSH keys for the remote hosts you've previously connected to</li>
         </ul>
     </li>
     <li><strong>~/.ssh/id_rsa and ~/.ssh/id_rsa.pub</strong>
