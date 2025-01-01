@@ -63,48 +63,48 @@ Understanding these utilities and files is key to effectively managing and troub
 <h2>Important SSH Utilities</h2>
 
 <ul>
-    <li><strong>ssh</strong>
+    <li><h3>ssh</h3>
         <ul>
             <li>Used for securely connecting to a remote server.</li>
             <li>Example: <code>ssh user@hostname</code> - initiates a secure connection to a remote server using your specified username and hostname.</li>
         </ul>
     </li>
-    <li><strong>sshd</strong>
+    <li><h3>sshd</h3>
         <ul>
             <li>The SSH daemon that runs on servers, listening for incoming SSH connections and handling authentication.</li>
         </ul>
     </li>
-    <li><strong>scp</strong>
+    <li><h3>scp</h3>
         <ul>
             <li>Securely copies files between local and remote systems using SSH.</li>
             <li>Example: <code>scp file.txt user@hostname:/path/to/destination</code> - securely copies a file from your local machine to a remote server using SSH</li>
         </ul>
     </li>
-    <li><strong>sftp</strong>
+    <li><h3>sftp</h3>
         <ul>
             <li>Secure File Transfer Protocol, an interactive file transfer utility over SSH.</li>
             <li>Example: <code>sftp user@hostname</code> - starts a secure file transfer session to a remote server using the SFTP (Secure File Transfer Protocol) protocol</li>
         </ul>
     </li>
-    <li><strong>ssh-keygen</strong>
+    <li><h3>ssh-keygen</h3>
         <ul>
             <li>Generates and manages SSH key pairs.</li>
             <li>Example: <code>ssh-keygen -t rsa -b 4096</code> - generates a new RSA SSH key pair with 4096 bits for secure authentication.</li>
         </ul>
     </li>
-    <li><strong>ssh-copy-id</strong>
+    <li><h3>ssh-copy-id</h3>
         <ul>
             <li>Copies a public key to a remote server for passwordless login.</li>
             <li>Example: <code>ssh-copy-id -i ~/.ssh/your_specific_public_key.pub user@hostname</code> - copies the specified public SSH key to a remote server for passwordless login</li>
         </ul>
     </li>
-    <li><strong>ssh-agent</strong>
+    <li><h3>ssh-agent</h3>
         <ul>
             <li>A helper program to store private keys in memory for easy authentication.</li>
             <li>Example: <code>eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa</code> - starts an SSH agent and adds your private key to it for easy SSH key management.</li>
         </ul>
     </li>
-    <li><strong>ssh-add</strong>
+    <li><h3>ssh-add</h3>
         <ul>
             <li>Adds private keys to ssh-agent for session-based authentication.</li>
             <li>Example: <code>ssh-add ~/.ssh/id_rsa</code> - adds your private SSH key to the SSH agent for easy SSH key management, even if there is no passphrase</li>
@@ -115,7 +115,7 @@ Understanding these utilities and files is key to effectively managing and troub
 
 <h2>Important Client Side SSH Configuration Files</h2>
 <ul>
-    <li><strong>~/.ssh/config</strong>
+    <li><h3>~/.ssh/config</h3>
         <ul>
             <li>User-specific SSH client configuration file. Allows setting per-host options like ports, usernames, or keys.</li>
             <li>Example:
@@ -129,17 +129,19 @@ Host myserver
             </li>
         </ul>
     </li>
-    <li><strong>~/.ssh/known_hosts</strong>
-        <ul>
-            <li>Stores fingerprints of previously connected hosts to prevent man-in-the-middle attacks. fingerprints refer to the unique identifiers (hashed representations) of the SSH keys for the remote hosts you've previously connected to</li>
-        </ul>
+    <li><h3>~/.ssh/known_hosts</h3>
+        <p>The <strong>known_hosts</strong> file is a client-side file and an important component of SSH security. Here’s a quick overview of what it is and how it works:</p>
+<ul>
+    <li><strong>Purpose:</strong> Stores the public keys of remote servers you've previously connected to via SSH. This helps verify the identity of the server in future connections.</li>
+    <li><strong>Format:</strong> Contains entries for each known host, including the hostname, IP address, and the server’s public key.</li>
+</ul>
     </li>
-    <li><strong>~/.ssh/id_rsa and ~/.ssh/id_rsa.pub</strong>
+    <li><h3>~/.ssh/id_rsa and ~/.ssh/id_rsa.pub</h3>
         <ul>
             <li>Default private (id_rsa) and public (id_rsa.pub) key files for RSA-based authentication.</li>
         </ul>
     </li>
-    <li><strong>~/.ssh/authorized_keys</strong>
+    <li><h3>~/.ssh/authorized_keys</h3>
         <ul>
             <li>Stores public keys of users allowed to access the account. Only exists on the server.</li>
         </ul>
