@@ -40,7 +40,7 @@ SSH Essentials
 
 
 ****************************** go over this and below 
-<h2>Component list in this repo</h2>
+<h2>Components list in this repo</h2>
 <ul>
 <li>ssh </li>
 <li>sshd</li>
@@ -63,156 +63,139 @@ Understanding these utilities and files is key to effectively managing and troub
 
 <h2>Important SSH Utilities</h2>
 
-1. ssh
-
-Used for securely connecting to a remote server.
-
-Example:
-
-ssh user@hostname
-
-
-
-2. sshd
-
-The SSH daemon that runs on servers, listening for incoming SSH connections and handling authentication.
-
-
-
-3. scp
-
-Securely copies files between local and remote systems using SSH.
-
-Example:
-
-scp file.txt user@hostname:/path/to/destination
-
-
-
-4. sftp
-
-Secure File Transfer Protocol, an interactive file transfer utility over SSH.
-
-Example:
-
-sftp user@hostname
-
-
-
-5. ssh-keygen
-
-Generates and manages SSH key pairs.
-
-Example:
-
-ssh-keygen -t rsa -b 4096
-
-
-
-6. ssh-copy-id
-
-Copies a public key to a remote server for passwordless login.
-
-Example:
-
-ssh-copy-id user@hostname
-
-
-
-7. ssh-agent
-
-A helper program to store private keys in memory for easy authentication.
-
-Example:
-
-eval $(ssh-agent)
-ssh-add ~/.ssh/id_rsa
-
-
-
-8. ssh-add
-
-Adds private keys to ssh-agent for session-based authentication.
-
-Example:
-
-ssh-add ~/.ssh/id_rsa
+<ol>
+    <li><strong>ssh</strong>
+        <ul>
+            <li>Used for securely connecting to a remote server.</li>
+            <li>Example: <code>ssh user@hostname</code></li>
+        </ul>
+    </li>
+    <li><strong>sshd</strong>
+        <ul>
+            <li>The SSH daemon that runs on servers, listening for incoming SSH connections and handling authentication.</li>
+        </ul>
+    </li>
+    <li><strong>scp</strong>
+        <ul>
+            <li>Securely copies files between local and remote systems using SSH.</li>
+            <li>Example: <code>scp file.txt user@hostname:/path/to/destination</code></li>
+        </ul>
+    </li>
+    <li><strong>sftp</strong>
+        <ul>
+            <li>Secure File Transfer Protocol, an interactive file transfer utility over SSH.</li>
+            <li>Example: <code>sftp user@hostname</code></li>
+        </ul>
+    </li>
+    <li><strong>ssh-keygen</strong>
+        <ul>
+            <li>Generates and manages SSH key pairs.</li>
+            <li>Example: <code>ssh-keygen -t rsa -b 4096</code></li>
+        </ul>
+    </li>
+    <li><strong>ssh-copy-id</strong>
+        <ul>
+            <li>Copies a public key to a remote server for passwordless login.</li>
+            <li>Example: <code>ssh-copy-id user@hostname</code></li>
+        </ul>
+    </li>
+    <li><strong>ssh-agent</strong>
+        <ul>
+            <li>A helper program to store private keys in memory for easy authentication.</li>
+            <li>Example: <code>eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa</code></li>
+        </ul>
+    </li>
+    <li><strong>ssh-add</strong>
+        <ul>
+            <li>Adds private keys to ssh-agent for session-based authentication.</li>
+            <li>Example: <code>ssh-add ~/.ssh/id_rsa</code></li>
+        </ul>
+    </li>
+</ol>
 
 
 <h2>Important Client Side SSH Configuration Files</h2>
-1. ~/.ssh/config
-
-User-specific SSH client configuration file. Allows setting per-host options like ports, usernames, or keys.
-
-Example:
-
+<ol>
+    <li><strong>~/.ssh/config</strong>
+        <ul>
+            <li>User-specific SSH client configuration file. Allows setting per-host options like ports, usernames, or keys.</li>
+            <li>Example:
+                <pre>
 Host myserver
     HostName example.com
     User myuser
     Port 2222
     IdentityFile ~/.ssh/id_rsa
-
-
-
-2. ~/.ssh/known_hosts
-
-Stores fingerprints of previously connected hosts to prevent man-in-the-middle attacks.
-
-
-
-3. ~/.ssh/id_rsa and ~/.ssh/id_rsa.pub
-
-Default private (id_rsa) and public (id_rsa.pub) key files for RSA-based authentication.
-
-
-
-4. ~/.ssh/authorized_keys
-
-Stores public keys of users allowed to access the account. Only exists on the server.
+                </pre>
+            </li>
+        </ul>
+    </li>
+    <li><strong>~/.ssh/known_hosts</strong>
+        <ul>
+            <li>Stores fingerprints of previously connected hosts to prevent man-in-the-middle attacks.</li>
+        </ul>
+    </li>
+    <li><strong>~/.ssh/id_rsa and ~/.ssh/id_rsa.pub</strong>
+        <ul>
+            <li>Default private (id_rsa) and public (id_rsa.pub) key files for RSA-based authentication.</li>
+        </ul>
+    </li>
+    <li><strong>~/.ssh/authorized_keys</strong>
+        <ul>
+            <li>Stores public keys of users allowed to access the account. Only exists on the server.</li>
+        </ul>
+    </li>
+</ol>
 
 
 
 
 <h2>Important Server Side SSH Configuration Files</h2>
-1. /etc/ssh/sshd_config
-
-Configuration file for the SSH daemon (sshd). Used to set server-wide options like authentication methods, ports, and allowed users.
-
-Key settings:
-
+<ol>
+    <li><strong>/etc/ssh/sshd_config</strong>
+        <ul>
+            <li>Configuration file for the SSH daemon (sshd). Used to set server-wide options like authentication methods, ports, and allowed users.</li>
+            <li>Key settings:
+                <pre>
 Port 22
 PermitRootLogin no
 PasswordAuthentication yes
+                </pre>
+            </li>
+        </ul>
+    </li>
+    <li><strong>/etc/ssh/ssh_config</strong>
+        <ul>
+            <li>System-wide configuration file for the SSH client.</li>
+        </ul>
+    </li>
+    <li><strong>/etc/ssh/ssh_host_*</strong>
+        <ul>
+            <li>Server's private and public host key files (e.g., ssh_host_rsa_key and ssh_host_rsa_key.pub).</li>
+        </ul>
+    </li>
+    <li><strong>/var/log/auth.log (or /var/log/secure on some systems)</strong>
+        <ul>
+            <li>Log file for tracking SSH authentication attempts.</li>
+        </ul>
+    </li>
+</ol>
 
-
-
-2. /etc/ssh/ssh_config
-
-System-wide configuration file for the SSH client.
-
-
-
-3. /etc/ssh/ssh_host_*
-
-Server's private and public host key files (e.g., ssh_host_rsa_key and ssh_host_rsa_key.pub).
-
-
-
-4. /var/log/auth.log (or /var/log/secure on some systems)
-
-Log file for tracking SSH authentication attempts.
 
 
 <h2>Most Commonly Used Files in Daily Operations</h2>
-On the Client Side:
+<ul>
+    <li><strong>On the Client Side:</strong>
+        <ul>
+            <li>~/.ssh/config</li>
+            <li>~/.ssh/id_rsa and ~/.ssh/known_hosts</li>
+        </ul>
+    </li>
+    <li><strong>On the Server Side:</strong>
+        <ul>
+            <li>/etc/ssh/sshd_config</li>
+            <li>/etc/ssh/ssh_host_*</li>
+        </ul>
+    </li>
+</ul>
 
-~/.ssh/config
-
-~/.ssh/id_rsa and ~/.ssh/known_hosts
-
-
-On the Server Side:
-
-/etc/ssh/sshd_config
-
-/etc/ssh/ssh_host_*
