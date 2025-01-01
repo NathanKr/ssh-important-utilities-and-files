@@ -1,3 +1,6 @@
+<h1>Project name</h2>
+SSH Essentials
+
 <h2>Project Description</h2>
 <p>This repository contains a list of important utilities and files related to SSH.</p>
 
@@ -5,13 +8,15 @@
 <p>When you start using SSH, you encounter many concepts, and it's important to have a list of the key components in SSH. This repository serves that purpose.</p>
 
 <h2>What is ssh</h2>
-<ul>
-<li><strong>SSH (Secure Shell)</strong>: A network protocol used to securely access and manage network devices and computers over an unsecured network.</li>
+<p>SSH (Secure Shell) is a cryptographic network protocol for secure data communication, especially for remote login and command-line execution, between two networked computers.</p>
 
-<li><strong>Encryption</strong>: SSH provides a secure channel by encrypting the data transmitted between the client and the server.</li>
-
-<li><strong>Authentication</strong>: It supports various authentication methods, including password and public-key authentication, to ensure only authorized users can access the system.</li>
-</ul>
+  <h3>Key Concepts</h3>
+  <ul>
+    <li><strong>Client-server architecture:</strong> SSH operates on a client-server model. The SSH client initiates a connection to the SSH server.</li>
+    <li><strong>Port 22:</strong> By default, SSH operates on TCP port 22.</li>
+    <li><strong>Encryption:</strong> All data transmitted between the client and server is encrypted using strong cryptographic algorithms.</li>
+    <li><strong>Authentication:</strong> SSH supports various authentication methods, including password-based and public-key-based authentication.</li>
+  </ul>
 
 <h2>Motivation for ssh</h2>
 <ul>
@@ -31,4 +36,4 @@
 
 </ul>
 
-<p>In all of these use cases, SSH uses a public/private key pair for authentication instead of a username/password. The public/private key pair is also used to encrypt the data passed between the client and server.</p>
+<p> In many scenarios, public-key cryptography is preferred over password-based authentication for improved security. A public-key pair is used for both authentication and encryption in these cases</p>
