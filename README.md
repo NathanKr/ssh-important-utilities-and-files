@@ -29,15 +29,12 @@ SSH Essentials
 <ul>
 <li><strong>Remote Server Access</strong>: SSH allows users to securely connect to remote servers, enabling system administrators to manage servers and perform tasks as if they were physically present. For example, working on a Digital Ocean droplet from your PC.</li>
 
-
 <li><strong>Automated Scripts</strong>: SSH is often used in scripts for automating tasks like backups, deployments, and monitoring, especially in DevOps environments, e.g., in GitHub Actions.</li>
 
 <li><strong>Secure Git Access</strong>: Developers use SSH keys to securely interact with remote Git repositories, enabling safe code collaboration and version control.</li>
 
 </ul>
 <p>In many scenarios, public-key cryptography is preferred over password-based authentication for improved security. A public-key pair is used for authentication but a symmetric encryption algorithm is used for encrypting the data transmitted during the session.</p>
-
-
 
 <h2>Components list in this repo</h2>
 <ul>
@@ -112,7 +109,6 @@ Understanding these utilities and files is key to effectively managing and troub
     </li>
 </ul>
 
-
 <h2>Important Client Side SSH Configuration Files</h2>
 <ul>
     <li><h3>~/.ssh/config</h3>
@@ -130,9 +126,9 @@ Host myserver
         </ul>
     </li>
     <li><h3>~/.ssh/known_hosts</h3>
-        <p>The <strong>known_hosts</strong> file is a client-side file and an important component of SSH security. Here’s a quick overview of what it is and how it works:</p>
+        <p>This file is a client-side file and an important component of SSH security. Here’s a quick overview of what it is and how it works:</p>
 <ul>
-    <li><strong>Purpose:</strong> Stores the public keys of remote servers you've previously connected to via SSH. This helps verify the identity of the server in future connections.</li>
+    <li><strong>Purpose:</strong> Stores the fingerprints (unique identifiers or hashed representations) of the public keys of remote servers you've previously connected to via SSH. This helps verify the identity of the server in future connections.</li>
     <li><strong>Format:</strong> Contains entries for each known host, including the hostname, IP address, and the server’s public key.</li>
 </ul>
     </li>
@@ -143,46 +139,44 @@ Host myserver
     </li>
     <li><h3>~/.ssh/authorized_keys</h3>
         <ul>
-            <li>Stores public keys of users allowed to access the account. Only exists on the server.</li>
-        </ul>
-    </li>
+    <li><strong>Purpose:</strong> The <code>authorized_keys</code> is a server-side file. It is an important component of SSH security, used to manage which SSH keys are authorized to log into a specific user account on a remote system. It specifies which public keys are permitted to authenticate and gain access to the server.</li>
+    <li><strong>Location:</strong> In the home directory of the user account on the server.</li>
+    <li><strong>Function:</strong> When you attempt to login via SSH from a client machine, the server checks your public key against the entries in the <code>authorized_keys</code> file. If a match is found, you are granted access without needing to enter a password.</li>
 </ul>
 
-
-
+</li>
+</ul>
 
 <h2>Important Server Side SSH Configuration Files</h2>
 <ul>
-    <li><strong>/etc/ssh/sshd_config</strong>
+    <li><h3>/etc/ssh/sshd_config</h3>
         <ul>
             <li>Configuration file for the SSH daemon (sshd). Used to set server-wide options like authentication methods, ports, and allowed users.</li>
             <li>Key settings:
                 <pre>
-Port 22
-PermitRootLogin no
-PasswordAuthentication yes
+                    Port 22
+                    PermitRootLogin no
+                    PasswordAuthentication yes
                 </pre>
             </li>
         </ul>
     </li>
-    <li><strong>/etc/ssh/ssh_config</strong>
+    <li><h3>/etc/ssh/ssh_config</h3>
         <ul>
             <li>System-wide configuration file for the SSH client.</li>
         </ul>
     </li>
-    <li><strong>/etc/ssh/ssh_host_*</strong>
+    <li><h3>/etc/ssh/ssh_host_*</h3>
         <ul>
             <li>Server's private and public host key files (e.g., ssh_host_rsa_key and ssh_host_rsa_key.pub).</li>
         </ul>
     </li>
-    <li><strong>/var/log/auth.log (or /var/log/secure on some systems)</strong>
+    <li><h3>/var/log/auth.log (or /var/log/secure on some systems)</h3>
         <ul>
             <li>Log file for tracking SSH authentication attempts.</li>
         </ul>
     </li>
 </ul>
-
-
 
 <h2>Most Commonly Used Files in Daily Operations</h2>
 <ul>
@@ -199,4 +193,3 @@ PasswordAuthentication yes
         </ul>
     </li>
 </ul>
-
