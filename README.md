@@ -14,7 +14,7 @@ SSH Essentials
 <ul>
 <li><strong>Client-server architecture:</strong> SSH operates on a client-server model. The SSH client initiates a connection to the SSH server.</li>
 <li><strong>Port 22:</strong> By default, SSH operates on TCP port 22.</li>
-<li><strong>Encryption:</strong> All data transmitted between the client and server is encrypted using strong cryptographic algorithms.</li>
+<li><strong>Encryption:</strong> All data transmitted between the client and server is encrypted using strong symmetric cryptographic algorithms.</li>
 <li><strong>Authentication:</strong> SSH supports various authentication methods, including password-based and public-key-based authentication.</li>
 </ul>
 
@@ -35,11 +35,10 @@ SSH Essentials
 <li><strong>Secure Git Access</strong>: Developers use SSH keys to securely interact with remote Git repositories, enabling safe code collaboration and version control.</li>
 
 </ul>
+<p>In many scenarios, public-key cryptography is preferred over password-based authentication for improved security. A public-key pair is used for authentication but a symmetric encryption algorithm is used for encrypting the data transmitted during the session.</p>
 
-<p> In many scenarios, public-key cryptography is preferred over password-based authentication for improved security. A public-key pair is used for both authentication and encryption in these cases</p>
 
 
-****************************** go over this and below 
 <h2>Components list in this repo</h2>
 <ul>
 <li>ssh </li>
@@ -63,7 +62,7 @@ Understanding these utilities and files is key to effectively managing and troub
 
 <h2>Important SSH Utilities</h2>
 
-<ol>
+<ul>
     <li><strong>ssh</strong>
         <ul>
             <li>Used for securely connecting to a remote server.</li>
@@ -111,11 +110,11 @@ Understanding these utilities and files is key to effectively managing and troub
             <li>Example: <code>ssh-add ~/.ssh/id_rsa</code></li>
         </ul>
     </li>
-</ol>
+</ul>
 
 
 <h2>Important Client Side SSH Configuration Files</h2>
-<ol>
+<ul>
     <li><strong>~/.ssh/config</strong>
         <ul>
             <li>User-specific SSH client configuration file. Allows setting per-host options like ports, usernames, or keys.</li>
@@ -145,13 +144,13 @@ Host myserver
             <li>Stores public keys of users allowed to access the account. Only exists on the server.</li>
         </ul>
     </li>
-</ol>
+</ul>
 
 
 
 
 <h2>Important Server Side SSH Configuration Files</h2>
-<ol>
+<ul>
     <li><strong>/etc/ssh/sshd_config</strong>
         <ul>
             <li>Configuration file for the SSH daemon (sshd). Used to set server-wide options like authentication methods, ports, and allowed users.</li>
@@ -179,7 +178,7 @@ PasswordAuthentication yes
             <li>Log file for tracking SSH authentication attempts.</li>
         </ul>
     </li>
-</ol>
+</ul>
 
 
 
