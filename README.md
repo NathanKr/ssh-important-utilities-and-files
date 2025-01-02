@@ -143,6 +143,7 @@ IdentityFile ~/.ssh/id_rsa
         <ul>
             <li>Default private (id_rsa) and public (id_rsa.pub) key files for RSA-based authentication.</li>
             <li>These keys are generated on the client-side and the public key is typically copied to the server's ~/.ssh/authorized_keys file to enable passwordless login</li>
+            <li>These keys are generated typically using ssh-keygen</li>
         </ul>
     </li>
    
