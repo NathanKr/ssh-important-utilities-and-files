@@ -7,7 +7,7 @@ SSH Essentials
 <h2>Project Motivation</h2>
 <p>SSH involves many concepts that can overwhelm new users. This repository compiles the key components to simplify the learning process and serve as a handy short guide.</p>
 
-<h2>What is ssh</h2>
+<h2>What is SSH</h2>
 <p>SSH (Secure Shell) is a cryptographic network protocol for secure data communication, especially for remote login and command-line execution, between two networked computers.</p>
 
 <h3>Key Concepts</h3>
@@ -18,7 +18,7 @@ SSH Essentials
 <li><strong>Authentication:</strong> SSH supports various authentication methods, including password-based and public-key-based authentication.</li>
 </ul>
 
-<h2>Motivation for ssh</h2>
+<h2>Motivation for SSH</h2>
 <ul>
 <li><strong>Security</strong>: SSH provides robust encryption and authentication, ensuring secure and private communication between devices over potentially unsecured networks.</li>
 
@@ -109,8 +109,14 @@ Understanding these utilities and files is key to effectively managing and troub
     </li>
 </ul>
 
-<h2>Important Client Side SSH Configuration Files</h2>
+<h2>Important Client Side SSH Files</h2>
 <ul>
+    <li><h3>/etc/ssh/ssh_config</h3>
+        <ul>
+            <li>System-wide configuration file for the SSH client.</li>
+            <li>This file provides default settings for all users on the system unless overridden by user-specific configuration files</li>
+        </ul>
+    </li>
     <li><h3>~/.ssh/config</h3>
         <ul>
             <li>User-specific SSH client configuration file. Allows setting per-host options like ports, usernames, or keys.</li>
@@ -137,18 +143,18 @@ Host myserver
             <li>Default private (id_rsa) and public (id_rsa.pub) key files for RSA-based authentication.</li>
         </ul>
     </li>
-    <li><h3>~/.ssh/authorized_keys</h3>
-        <ul>
+   
+</ul>
+
+<h2>Important Server Side SSH Files</h2>
+<ul>
+ <li><h3>~/.ssh/authorized_keys</h3>
+    <ul>
     <li><strong>Purpose:</strong> The <code>authorized_keys</code> is a server-side file. It is an important component of SSH security, used to manage which SSH keys are authorized to log into a specific user account on a remote system. It specifies which public keys are permitted to authenticate and gain access to the server.</li>
     <li><strong>Location:</strong> In the home directory of the user account on the server.</li>
     <li><strong>Function:</strong> When you attempt to login via SSH from a client machine, the server checks your public key against the entries in the <code>authorized_keys</code> file. If a match is found, you are granted access without needing to enter a password.</li>
-</ul>
-
-</li>
-</ul>
-
-<h2>Important Server Side SSH Configuration Files</h2>
-<ul>
+    </ul>
+    </li>
     <li><h3>/etc/ssh/sshd_config</h3>
         <ul>
             <li>Configuration file for the SSH daemon (sshd). Used to set server-wide options like authentication methods, ports, and allowed users.</li>
@@ -159,11 +165,6 @@ Host myserver
                     PasswordAuthentication yes
                 </pre>
             </li>
-        </ul>
-    </li>
-    <li><h3>/etc/ssh/ssh_config</h3>
-        <ul>
-            <li>System-wide configuration file for the SSH client.</li>
         </ul>
     </li>
     <li><h3>/etc/ssh/ssh_host_*</h3>
