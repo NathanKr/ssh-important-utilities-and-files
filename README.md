@@ -161,7 +161,7 @@ IdentityFile ~/.ssh/id_rsa
     <li><h3>/etc/ssh/sshd_config</h3>
         <ul>
             <li>Configuration file for the SSH daemon (sshd). Used to set server-wide options like authentication methods, ports, and allowed users.</li>
-        <li>Key settings:
+        <li>Recommended settings:
 
 ```bash
     Port 22
