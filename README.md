@@ -120,15 +120,16 @@ Understanding these utilities and files is key to effectively managing and troub
     <li><h3>~/.ssh/config</h3>
         <ul>
             <li>User-specific SSH client configuration file. Allows setting per-host options like ports, usernames, or keys.</li>
-            <li>Example:
-                <pre>
+            <li>The following example shows how to set up a user-specific SSH configuration file for connecting to a remote server with custom settings. By default, SSH uses port 22, your local username, and the first available key:
+        
+```bash
 Host myserver
-    HostName example.com
-    User myuser
-    Port 2222
-    IdentityFile ~/.ssh/id_rsa
-                </pre> - shows how to set up a user-specific SSH configuration file for connecting to a remote server with custom settings. By default, SSH uses port 22, your local username, and the first available key
-            </li>
+HostName example.com
+User myuser
+Port 2222
+IdentityFile ~/.ssh/id_rsa
+```
+</li>
         </ul>
     </li>
     <li><h3>~/.ssh/known_hosts</h3>
@@ -141,6 +142,7 @@ Host myserver
     <li><h3>~/.ssh/id_rsa and ~/.ssh/id_rsa.pub</h3>
         <ul>
             <li>Default private (id_rsa) and public (id_rsa.pub) key files for RSA-based authentication.</li>
+            <li>These keys are generated on the client-side and the public key is typically copied to the server's ~/.ssh/authorized_keys file to enable passwordless login</li>
         </ul>
     </li>
    
@@ -158,13 +160,15 @@ Host myserver
     <li><h3>/etc/ssh/sshd_config</h3>
         <ul>
             <li>Configuration file for the SSH daemon (sshd). Used to set server-wide options like authentication methods, ports, and allowed users.</li>
-            <li>Key settings:
-                <pre>
-                    Port 22
-                    PermitRootLogin no
-                    PasswordAuthentication yes
-                </pre>
-            </li>
+        <li>Key settings:
+
+```bash
+    Port 22
+    PermitRootLogin no
+    PasswordAuthentication yes
+```
+            
+</li>
         </ul>
     </li>
     <li><h3>/etc/ssh/ssh_host_*</h3>
@@ -185,13 +189,21 @@ Host myserver
 <ul> 
 <li><strong>On the Client Side:</strong> 
 <ul> 
-<li><code>~/.ssh/config</code>: User-specific configuration file to simplify SSH commands. For example: <pre> Host myserver HostName example.com User myuser Port 2222 IdentityFile ~/.ssh/id_rsa </pre> </li>
-<li><code>~/.ssh/id_rsa</code> and <code>~/.ssh/known_hosts</code>: - Keep <code>id_rsa</code> private and secure. - Periodically clean outdated entries in <code>known_hosts</code>. </li> 
+<li><code>~/.ssh/config</code>: User-specific configuration file to simplify SSH commands</li>
+<li><code>~/.ssh/id_rsa</code> and <code>~/.ssh/known_hosts</code>: - Keep <code>id_rsa</code> private and secure.</li>
+<li>Periodically clean outdated entries in <code>known_hosts</code></li> 
 </ul> 
 </li> 
 <li><strong>On the Server Side:</strong> 
 <ul> 
-<li><code>/etc/ssh/sshd_config</code>: Central configuration for the SSH server. Ensure secure settings like: <pre> PermitRootLogin no PasswordAuthentication no PubkeyAuthentication yes </pre> 
+<li><code>/etc/ssh/sshd_config</code>: Central configuration for the SSH server. Ensure secure settings like: 
+
+```bash
+   PermitRootLogin no 
+   PasswordAuthentication no 
+   PubkeyAuthentication yes
+```
+
 </li> 
 <li><code>/etc/ssh/ssh_host_*</code>: Server’s host keys that establish trust during connections.
 </li> 
