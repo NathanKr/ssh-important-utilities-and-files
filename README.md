@@ -191,10 +191,11 @@ IdentityFile ~/.ssh/id_rsa
 <li><strong>On the Client Side:</strong> 
 <ul> 
 <li><code>~/.ssh/config</code>: User-specific configuration file to simplify SSH commands</li>
-<li><code>~/.ssh/id_rsa</code> and <code>~/.ssh/known_hosts</code>: - Keep <code>id_rsa</code> private and secure.</li>
+<li><code>~/.ssh/id_rsa</code> and <code>~/.ssh/known_hosts</code>: Keep <code>id_rsa</code> private and secure.</li>
 <li>Periodically clean outdated entries in <code>known_hosts</code></li> 
 </ul> 
 </li> 
+
 <li><strong>On the Server Side:</strong> 
 <ul> 
 <li><code>/etc/ssh/sshd_config</code>: Central configuration for the SSH server. Ensure secure settings like: 
