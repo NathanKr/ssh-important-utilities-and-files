@@ -179,18 +179,23 @@ Host myserver
     </li>
 </ul>
 
-<h2>Most Commonly Used Files in Daily Operations</h2>
-<ul>
-    <li><strong>On the Client Side:</strong>
-        <ul>
-            <li>~/.ssh/config</li>
-            <li>~/.ssh/id_rsa and ~/.ssh/known_hosts</li>
-        </ul>
-    </li>
-    <li><strong>On the Server Side:</strong>
-        <ul>
-            <li>/etc/ssh/sshd_config</li>
-            <li>/etc/ssh/ssh_host_*</li>
-        </ul>
-    </li>
+
+<h2>Most Commonly Used Files in Daily Operations</h2> 
+<p>These are the files most users frequently interact with while using SSH:</p> 
+<ul> 
+<li><strong>On the Client Side:</strong> 
+<ul> 
+<li><code>~/.ssh/config</code>: User-specific configuration file to simplify SSH commands. For example: <pre> Host myserver HostName example.com User myuser Port 2222 IdentityFile ~/.ssh/id_rsa </pre> </li>
+<li><code>~/.ssh/id_rsa</code> and <code>~/.ssh/known_hosts</code>: - Keep <code>id_rsa</code> private and secure. - Periodically clean outdated entries in <code>known_hosts</code>. </li> 
+</ul> 
+</li> 
+<li><strong>On the Server Side:</strong> 
+<ul> 
+<li><code>/etc/ssh/sshd_config</code>: Central configuration for the SSH server. Ensure secure settings like: <pre> PermitRootLogin no PasswordAuthentication no PubkeyAuthentication yes </pre> 
+</li> 
+<li><code>/etc/ssh/ssh_host_*</code>: Server’s host keys that establish trust during connections.
+</li> 
+</ul> 
+</li> 
 </ul>
+
